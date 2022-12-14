@@ -9,7 +9,7 @@ public:
 
 class RootCmponent : public IComponent {
 public:
-    ~RootCmponent(){
+    virtual ~RootCmponent(){
         for(auto& item : componentList){
             if(item == this){
                 continue;
@@ -98,8 +98,20 @@ private:
 int main(){
     std::cout<< "composite." <<std::endl;
 
+    IComponent* meshCpt = new MeshComponent();
+    IComponent*  transformCpt = new TransformComponent();
     Actor actor;
-    actor.addComponent();
+    actor.addComponent(meshCpt);
+    actor.addComponent(transformCpt);
+    actor.onInit();
+
+    for(int i = 0; i < 100; i++){
+        if(i == 99){
+            actor.removeComponent(transformCpt);
+        }
+        std::cout<< "No." << i << ":" <<std::endl;
+        actor.onUpdate();
+    }
 
     return EXIT_SUCCESS;
 }
