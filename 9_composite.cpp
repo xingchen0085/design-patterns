@@ -84,6 +84,7 @@ public:
     }
     void removeComponent(IComponent* component){
         _rootComponent->remove(component);
+        delete component;
     }
     virtual void onInit(){
         _rootComponent->onInit();
