@@ -106,7 +106,8 @@ int main(){
     actor.onInit();
 
     for(int i = 0; i < 100; i++){
-        if(i == 99){
+        if(i == 97){
+            //actor.removeComponent(meshCpt);
             actor.removeComponent(transformCpt);
         }
         std::cout<< "No." << i << ":" <<std::endl;
